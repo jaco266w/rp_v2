@@ -240,7 +240,7 @@
       
           #footer_about img {
               min-width: 100px;
-              width: 100%;
+              min-height: 30px;
               max-width: 200px;
               margin-bottom: 20px;
           }
