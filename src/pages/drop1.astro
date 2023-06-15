@@ -1,0 +1,161 @@
+---
+// Definere astro props så de kan bruges i html
+import MainLayout from '../layout/MainLayout.astro';
+import CardItem from '../components/CardItem.astro';
+import CardItemStock from '../components/CardItemStock.astro';
+
+// Definere url og key til supabase
+const url = "https://ddfghjewycntqcnvdpwb.supabase.co/rest/v1/Item?drop1=is.true";
+const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRkZmdoamV3eWNudHFjbnZkcHdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQ3NDE2MTEsImV4cCI6MjAwMDMxNzYxMX0.QDdzYHa06Ihu_Ai3vPFMaU6XKWgtNmejT-bbgcZ2Z4A";
+
+// Henter data fra supabase
+const response = await fetch(url,{
+	method: "GET",
+	headers: {
+		apikey: key,
+		'Accept': 'application/json',
+		'Content-Type': 'application/json'
+	},
+
+});
+
+const items = await response.json();
+---
+
+<MainLayout title="Drop1">
+    <main>
+        <div class="space" />
+        <h1>Drops</h1>
+        <div class="card_shelf margin">
+            <a href="/drop1" class="card_drop">
+              <h3>Drop 1</h3>
+              <img src="/img/drop1.webp" alt="Billede af drop">
+            </a>
+            <a href="/drop2" class="card_drop">
+              <h3>Drop 2</h3>
+              <img src="/img/drop2.webp" alt="Billede af drop">
+            </a>
+            <a href="/drop3" class="card_drop">
+              <h3>Drop 3</h3>
+              <img src="/img/drop3.webp" alt="Billede af drop">
+            </a>
+        </div>
+        <h2 id="items" class="margin">Drop 1</h2>
+        <div class="shelf margin">
+          <!-- mapper igennem data og tjekker for om et produkt er in stock eller ej -->
+          {
+            items.map((item) => {
+              // hvis et produkt ikke er in stock, så vises det ikke
+              if(item.Instock == false) {
+                return <CardItem
+                Link = {"/item/" + item.slug} 
+                Image = {item.Image} 
+                Name = {item.Name} 
+                Price = {item.Price} 
+                />
+              }
+              else {
+              // hvis et produkt er in stock, så vises det
+                return <CardItemStock
+                Link = {"/item/" + item.slug} 
+                Image = {item.Image} 
+                Name = {item.Name} 
+                Price = {item.Price} 
+                />
+              }
+              
+            })
+          }
+        </div>
+    </main>
+</MainLayout>
+
+<style>
+    
+    
+     .space {
+       height: 70px;
+   }
+
+   h1 {
+    text-align: center;
+    margin-bottom: 30px;
+   }
+
+   h2 {
+    margin-top: 40px;
+    margin-bottom: 10px;
+   }
+
+    .card_shelf {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .card_drop {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    align-items: center;
+
+    width: 100%;
+		min-width: 200px;
+		max-width: 400px;
+		scroll-snap-align: start;
+  }
+
+  .card_drop h3 {
+    grid-row: 1;
+    grid-column: 1;
+    z-index: 1;
+
+    font-size: 2rem;
+    color: var(--third-text-color);
+  }
+
+  .card_drop img {
+    grid-row: 1;
+    grid-column: 1;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .shelf {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 420px));
+    justify-content: center;
+    gap: 40px;
+  }
+
+  @media (min-width: 600px) {
+    .space {
+            height: 140px;
+        }
+
+    h2 {
+      margin-top: 80px;
+    }
+
+    .card_shelf {
+      max-width: 1400px;
+      margin: auto;
+      justify-content: space-between;
+      flex-direction: row;
+
+    }
+    .card_drop h3 {
+      font-size: 3rem;
+    }
+  }
+</style>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const drop = urlParams.get("drop");
+  console.log(drop);
+  
+</script>

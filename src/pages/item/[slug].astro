@@ -1,0 +1,191 @@
+---
+// Importere vores main layout
+import MainLayout from "../../layout/MainLayout.astro";
+
+
+// Her henter vi vores data fra vores database
+export async function getStaticPaths() {
+    const url = "https://ddfghjewycntqcnvdpwb.supabase.co/rest/v1/Item";
+    const options = {
+        headers: {
+            apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRkZmdoamV3eWNudHFjbnZkcHdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQ3NDE2MTEsImV4cCI6MjAwMDMxNzYxMX0.QDdzYHa06Ihu_Ai3vPFMaU6XKWgtNmejT-bbgcZ2Z4A"
+        },
+    };
+    const response = await fetch(url, options);
+    const data = await response.json();
+    // Her mapper vi igennem vores data og definere vores slug og props
+    return data.map((item) => ({
+        params: { slug: item.slug },
+        props: { item },
+    }));
+}
+
+const { item } = Astro.props;
+---
+<MainLayout title={item.Name}>
+    <main>
+        <div class="space" />
+        <button onclick="history.back()" class="back margin">&#8592;  Back</button>
+        <section class="margin">
+            <!-- hvis et item fra databasen er out of stock tilføjer klassen container_image som gør at billedet bliver vist som out of stock -->
+            <div class={item.Instock === false && "container_image"}>
+                <div class={item.Instock === true && "skjul"}>
+                    <p>OUT OF STOCK</p>
+                </div>
+                <img src={item.Image} alt="Model med Ruda Patrice produkt"></div>
+            <div>
+                <h1 class={item.Instock === false && "line"}>{item.Name}</h1>
+                <p class={item.Instock === false && "line"} id="price">DKK {item.Price}</p>
+                <div id="wrapper_size">
+                    <label for="sizes">SIZE:</label>
+                    <select name="sizes" id="sizes">
+                        <option value="">SELECT SIZE</option>
+                        <option value="extra small">EXTRA SMALL</option>
+                        <option value="small">SMALL</option>
+                        <option value="medium">MEDIUM</option>
+                        <option value="large">LARGE</option>
+                        <option value="extra large">EXTRA LARGE</option>
+                    </select>
+                </div>
+                <button class="atc">Add To Cart</button>
+                <p id="description">{item.Description}</p>
+            </div>
+        </section>
+    </main>
+</MainLayout>
+
+<style>
+     .space {
+       height: 70px;
+   }
+
+   .skjul {
+         display: none;
+   }
+
+   .line{
+    text-decoration: line-through;
+   }
+
+   .back {
+        background-color: transparent;
+        background-color: transparent;
+        border: 1px solid black;
+        border-radius: 0px;
+        padding: 10px;
+        margin-bottom: 20px;
+        font-size: 1rem;
+        color: black;
+        place-self: flex-start;
+   }
+
+   section {
+    display: flex;
+    flex-direction: column;
+
+    /* max-height: 600px; */
+   }
+
+   .container_image {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        justify-items: center;
+        align-items: center;
+
+        max-width: 350px;
+   }
+
+   .container_image div {
+        grid-column: 1;
+        grid-row: 1;
+        z-index: 3;
+        background-color: #a5a5a590;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--third-text-color);
+        font-size: 2rem;
+   }
+
+   img {
+        height: 100%;
+        object-fit: contain;
+        grid-column: 1;
+        grid-row: 1;
+        z-index: 1;
+   }
+
+   h1 {
+       font-size: 2rem;
+       margin-bottom: 20px;
+   }
+
+    #price {
+         font-size: 1.5rem;
+         font-weight: 700;
+         margin-bottom: 20px;
+    }
+
+    #wrapper_size {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    select {
+        background-color: transparent;
+        border: 1px solid black;
+        border-radius: 0px;
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    .atc {
+        width: 100%;
+        background-color: transparent;
+        border: 1px solid black;
+        border-radius: 0px;
+        padding: 10px;
+        margin-bottom: 40px;
+        font-size: 1rem;
+        color: black;
+    }
+
+    button:hover {
+        background-color: black;
+        color: white;
+    }
+
+    #description {
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.5rem;
+    }
+
+   @media (min-width: 600px) {
+    .space {
+            height: 140px;
+        }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        max-width: 1200px;
+    }
+
+    section {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 50px;
+    }
+
+    .container_image p {
+        font-size: 2rem;
+    }
+   }
+</style>

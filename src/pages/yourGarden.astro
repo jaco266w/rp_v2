@@ -1,0 +1,80 @@
+---
+import MainLayout from '../layout/MainLayout.astro';
+import JoinEvent from '../components/JoinEvent.astro';
+import DidYouKnow from '../components/DidYouKnow.astro';
+import Card_YourFave from '../components/Card_YourFave.astro';
+import Banner from '../components/Banner.astro';
+---
+
+<MainLayout title="Gardens">
+    <main>
+        <div class="space" />
+        <h1>Show Us Your Gardens</h1>
+        <JoinEvent />
+        <DidYouKnow />
+        <article>
+            <p>OUR COMMUNITY THROUGH INSTAGRAM</p>
+            <h3>SHOW US WHICH ITEM ARE OUR FAVORITE ONES?</h3>
+            <div class="shelf">
+                <Card_YourFave src="/img/fave_1.webp" name="@Paw_svendsen" line="A beer in the King's garden wearing my favourite brand" />
+                <Card_YourFave src="/img/fave_2.webp" name="@Maria_andersen" line="I used my mint plant to make a jucie, so fresh #rudapatriceshowyourgarden" />
+                <Card_YourFave src="/img/fave_3.webp" name="@Monica _khoury" line="To an event at Ruda Patrice - CHEERS" />
+            </div>
+        </article>
+        <Banner />
+    </main>
+</MainLayout>
+
+<style>
+
+    .space {
+       height: 70px;
+   }
+
+   h1 {
+       text-align: center;
+       margin-bottom: 25px;
+   }
+
+    article {
+        background-color: var(--secondary-color);
+        padding: 40px;
+        margin-top: 40px;
+    }
+
+    h3 {
+        line-height: 1rem;
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+
+    .shelf {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 30px;
+    }
+
+    
+    @media (min-width: 600px) {
+
+        .space {
+            height: 160px;
+        }
+        article {
+            padding: 120px;
+        }
+        
+        
+        .shelf {
+            flex-direction: row;
+            gap: 100px;
+        }
+
+        h1 {
+            font-size: 5rem;
+        }
+        
+    }
+
+</style>

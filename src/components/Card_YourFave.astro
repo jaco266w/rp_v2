@@ -1,0 +1,28 @@
+---
+// Definere astro props så de kan bruges i html
+const {src} = Astro.props
+const {name} = Astro.props
+const {line} = Astro.props
+
+---
+
+<div class="card">
+    <img src={src} alt="Opslag fra Instagram">
+    <p class="name">{name}</p>
+    <p>{line}</p>
+</div>
+
+<style>
+    .card {
+        background-color: var(--third-color);
+        padding: 20px;
+        width: 100%;
+    }
+
+    img + p {
+        font-weight: 700;
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+</style>

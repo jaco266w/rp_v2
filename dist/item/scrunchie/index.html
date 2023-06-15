@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+		<meta name="viewport" content="width=device-width">
+		<meta name="generator" content="Astro v2.5.1">
+		<link rel="stylesheet" href="https://use.typekit.net/msv0dhm.css">
+		<link rel="stylesheet" href="/css/generel.css">
+		<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+		<script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js"></script>
+		<title>UPCYCLED SILKY SCRUNCHIE </title>
+	<link rel="stylesheet" href="/_astro/_slug_.ca6adca3.css" /></head>
+	<body>
+		<header>
+			<nav>
+				<a href="/"><img src="/img/Logo.png" alt="Logo"></a>
+				<ul class="desktop_menu">
+					<li><a href="/store">Store</a></li>
+					<li><a href="/about">About Us</a></li>
+					<li><a href="/ourMaterials">Our Materials</a></li>
+					<li><a href="/yourGarden">Your Garden</a></li>
+				</ul>
+				<lottie-player class="burger-menu-button" id="burger" speed="4" src="https://assets6.lottiefiles.com/packages/lf20_pDIAHc.json"></lottie-player>
+				<ul class="menu-list">
+				  <li><a href="/store">Store</a></li>
+				  <li><a href="/about">About Us</a></li>
+				  <li><a href="/ourMaterials">Our Materials</a></li>
+				  <li><a href="/yourGarden">Your Garden</a></li>
+				</ul>
+				<img id="kurv" src="/icon/shopping-bag.svg" alt="Kurv">
+			</nav>
+		</header>
+		
+    <main class="astro-FDCSZDP6">
+        <div class="space astro-FDCSZDP6"></div>
+        <button onclick="history.back()" class="back margin astro-FDCSZDP6">&#8592;  Back</button>
+        <section class="margin astro-FDCSZDP6">
+            <div class="container_image astro-FDCSZDP6">
+                <div class="false astro-FDCSZDP6">
+                    <p class="astro-FDCSZDP6">OUT OF STOCK</p>
+                </div>
+                <img src="/product/scrunchie.webp" alt="Model med Ruda Patrice produkt" class="astro-FDCSZDP6"></div>
+            <div class="astro-FDCSZDP6">
+                <h1 class="line astro-FDCSZDP6">UPCYCLED SILKY SCRUNCHIE </h1>
+                <p class="line astro-FDCSZDP6" id="price">DKK 150.00</p>
+                <div id="wrapper_size" class="astro-FDCSZDP6">
+                    <label for="sizes" class="astro-FDCSZDP6">SIZE:</label>
+                    <select name="sizes" id="sizes" class="astro-FDCSZDP6">
+                        <option value="" class="astro-FDCSZDP6">SELECT SIZE</option>
+                        <option value="extra small" class="astro-FDCSZDP6">EXTRA SMALL</option>
+                        <option value="small" class="astro-FDCSZDP6">SMALL</option>
+                        <option value="medium" class="astro-FDCSZDP6">MEDIUM</option>
+                        <option value="large" class="astro-FDCSZDP6">LARGE</option>
+                        <option value="extra large" class="astro-FDCSZDP6">EXTRA LARGE</option>
+                    </select>
+                </div>
+                <button class="atc astro-FDCSZDP6">Add To Cart</button>
+                <p id="description" class="astro-FDCSZDP6">THE SECOND ITERATION OF OUR BELOEVED SCRUNCHIES. EVERY PIECE IS UNIQUE. SELECT THE COLOR YOU DESIRE, AND ENJOY RESPONSIBLY.</p>
+            </div>
+        </section>
+    </main>
+
+        <footer class="footer">
+            <div id="footer_about">
+                <img src="/img/Logo.png" alt="Logo">
+                <p>We are based in copenhagen and we produces our products under pre sensible stands.</p>
+                <p>HERLUF TROLLES GADE 21, KLD.</p>
+                <p>1052 KØBENHAVN K</p>
+                <p>DENMARK</p>
+            </div>
+            <div id="footer_company">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="faq.astro">FAQ</a></li>
+                    <li><a href="sizeguide.astro">Size Guide</a></li>
+                    <li><a href="termscond.astro">Terms & Conditions</a></li>
+                    <li><a href="contact.astro">Contact</a></li>
+                </ul>
+            </div>
+            <div id="footer_news">
+                <div>
+                	<h4>Sign Up To Newsletter</h4>
+	                <form>
+	                    <input type="email" placeholder="YourMail@gmail.com" required>
+	                    <button>SUBSCRIBE</button>
+	                </form>
+                </div>
+				<div id="footer_socials">
+					<a target="_blank" href="https://www.instagram.com/rudapatrice/"><img src="/icon/instagram.svg" alt="Instagram Logo"></a>
+					<a target="_blank" href="https://www.tiktok.com/@rudapatrice?is_from_webapp=1&sender_device=pc"><img src="/icon/tiktok.svg" alt="TikTok Logo"></a>
+					<a target="_blank" href="https://www.facebook.com/profile.php?id=100081175756836"><img src="/icon/facebook.svg" alt=""></a>
+				</div>
+            </div>
+        </footer>
+	<script>
+	document.querySelector("#burger").addEventListener("click", toggleMenu);
+
+    function toggleMenu() {
+		console.log("toggleMenu");
+      	var menuList = document.querySelector(".menu-list");
+      	menuList.classList.toggle("show");
+    }
+
+	window.addEventListener("scroll", function() {
+      var icon = document.querySelector("#kurv");
+      var footer = document.querySelector(".footer");
+
+      var iconBottom = icon.offsetTop + icon.offsetHeight;
+      var footerTop = footer.offsetTop;
+
+      if (window.pageYOffset + window.innerHeight > footerTop) {
+        icon.style.bottom = (window.pageYOffset + window.innerHeight - footerTop + 20) + "px";
+      } else {
+        icon.style.bottom = "20px";
+      }
+    });
+
+	LottieInteractivity.create({
+    player:'#burger',
+    mode:"cursor",
+    actions: [
+        {
+            type: "toggle"
+        }
+]
+});
+  </script></body></html>

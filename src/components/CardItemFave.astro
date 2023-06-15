@@ -1,0 +1,80 @@
+---
+// Definere astro props så de kan bruges i html
+const {Link, Image, Name, Price} = Astro.props;
+
+
+---
+
+<article>
+    <a href={Link}>
+        <div class="billede">
+            <div class="skjul">
+                <p>Out Of Stock</p>
+            </div>
+            <img src={Image} alt="Model med Produktet">
+        </div>
+        <h4>{Name}</h4>
+        <p>DKK {Price}</p>
+    </a>
+</article>
+
+<style>
+
+    img {
+        max-height: 600px;
+        object-fit: contain;
+    }
+
+    h4 {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    .skjul {
+        display: none;
+    }
+
+    .billede {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-auto-rows: 1fr;
+        justify-items: center;
+        align-items: center;
+    }
+
+    div div {
+        grid-column: 1;
+        grid-row: 1;
+        z-index: 3;
+        background-color: #a5a5a590;
+        /* width: 100%;
+        height: 100%; */
+        display: grid;
+        align-content: center;
+        color: var(--third-text-color);
+        font-size: 2rem;
+    }
+
+    .billede img {
+        grid-column: 1;
+        grid-row: 1;
+        z-index: 1;
+    }
+
+   @media (min-width: 600px) {
+
+    div div p {
+        font-size: 2rem;
+    }
+   }
+
+</style>

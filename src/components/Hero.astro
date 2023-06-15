@@ -1,0 +1,68 @@
+---
+
+---
+<a href="/yourGarden">
+  <section id="hero">
+    <div>
+      <img src="/img/hero1.webp" alt="Ruda Patrice Trøje">
+      <p>Transparency</p>
+    </div>
+    <div>
+      <img src="/img/hero2.webp" alt="Ruda Patrice Bukser">
+      <p>Responsibility</p>
+    </div>
+  </section>
+</a>
+
+  <style>
+    #hero {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #hero div {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    justify-items: center;
+    align-items: center;
+  }
+
+  #hero div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  #hero div p {
+    grid-row: 1;
+    grid-column: 1;
+
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: var(--third-text-color);
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  a:hover p {
+    transform: scale(1.02);
+    transition: 0.2s;
+  }
+
+  @media (min-width: 600px) {
+    #hero {
+        flex-direction: row;
+    }
+
+    #hero div p {
+      font-size: 3.5rem;
+    }
+  }
+  </style>

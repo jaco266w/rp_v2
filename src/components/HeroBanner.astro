@@ -1,0 +1,57 @@
+---
+// Definere astro props så de kan bruges i html
+const {breadcrumb} = Astro.props;
+---
+
+<article>
+    <img src="/img/bc.webp" alt="Billede af 2 modeller i Ruda Patrice tøj">
+    <p>{breadcrumb}</p>
+</article>
+
+<style>
+    article {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+    }
+
+    img {
+        object-fit: contain;
+        min-height: 210px;
+
+        z-index: 1;
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    p {
+        padding: 15px;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        background-color: var(--secondary-color);
+        border-radius: 15px;
+
+        place-self: end start;
+        z-index: 2;
+        grid-column: 1;
+        grid-row: 1;
+
+        font-size: 1.3rem;
+        text-transform: uppercase;
+    }
+
+    @media (min-width: 600px) {
+         
+        img {
+            object-fit: cover;
+            max-height: 500px;
+        }
+
+        p {
+            padding: 30px;
+            font-size: 1.8rem;
+            margin-left: 30px;
+            margin-bottom: 30px;
+        }
+    }
+</style>

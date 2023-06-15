@@ -1,0 +1,130 @@
+---
+// Importerer CardItemFave komponenten
+import CardItemFave from '../components/CardItemFave.astro'
+
+// Definere URL og API key som vi skal bruge til at hente data fra Supabase
+const url = "https://ddfghjewycntqcnvdpwb.supabase.co/rest/v1/Item";
+const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRkZmdoamV3eWNudHFjbnZkcHdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQ3NDE2MTEsImV4cCI6MjAwMDMxNzYxMX0.QDdzYHa06Ihu_Ai3vPFMaU6XKWgtNmejT-bbgcZ2Z4A";
+
+// Henter data fra Supabase
+const response = await fetch(url,{
+	method: "GET",
+	headers: {
+		apikey: key,
+		'Accept': 'application/json',
+		'Content-Type': 'application/json'
+	},
+
+});
+
+const items = await response.json();
+---
+<article>
+    <p>PATRICK & DANIEL FAVORITE ITEM</p>
+    <h2>WONDER WHICH ITEM IS OUR FAVORITE?</h2>
+    <div class="shelf">
+        <img src="/img/dp_sofa.webp" alt="Daniel og Patrick i en sofa">
+        <div>
+            <p class="center">Patrick & Daniels FAVORITE ITEM</p>
+            <div class="card">
+                <!-- mapper igennem data og viser et produkt hvis det er klassificeret som en favorit i supabase. favoritten bliver vist på baggrund af komponenten CardItemFave -->
+                {
+                    items.map((item) => {
+                        if(item.Fave == true) {
+                        return <CardItemFave 
+                        Link = {"/item/" + item.slug}
+                        Image = {item.Image} 
+                        Name = {item.Name} 
+                        Price = {item.Price} 
+                        />
+                        }
+                    })
+                }
+            </div>
+        </div>
+    </div>
+</article>
+
+<style>
+    article {
+        margin-top: 60px;
+        margin-bottom: 100px;
+    }
+
+    article > p,
+    article > h2 {
+        max-width: 1300px;
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .shelf {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 40px;
+
+        padding-top: 40px;
+        padding-bottom: 40px;
+
+        background-color: var(--secondary-color);
+    }
+
+    .shelf div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+
+    .center {
+        text-align: center;
+        margin-bottom: 10px;
+        font-weight: 100;
+        font-size: 1rem;
+    }
+   
+    .card {
+        background-color: var(--third-color);
+        padding: 20px;
+        width: 60%;
+    }
+
+    @media (min-width: 600px) {
+
+        article > p,
+        article > h2 {
+        max-width: 1300px;
+        margin-left: auto;
+        margin-right: auto;
+        }
+
+        .shelf {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-items: center;
+            align-items: center;
+
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+
+        .shelf img {
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .shelf div {
+            align-items: center;
+        }
+
+        
+    }
+    
+</style>

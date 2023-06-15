@@ -1,0 +1,53 @@
+---
+import MainLayout from '../layout/MainLayout.astro';
+import CardMaterial from '../components/CardMaterial.astro';
+---
+
+<MainLayout title="Our Materials">
+    <main>
+        <div class="space" />
+        <h1>Our Materials</h1>
+        <div class="shelf">
+            <CardMaterial classs="color" src="/img/material_1.webp" material="Upcycled Silky Material" desc="Our upcycled silky scarves material are made from vintage silk scarves, sourced in the Netherlands. Once we receive the silk scarves we sort, clean and cut away the weak parts before cut and sew, in order to ensure the highest possible quality of the end product. Due to the difficulty in sorting the high amount of silk scarves our supplier sources, there is a chance that a small amount of the scarves are composed of polyester and not silk. Due to this risk, we refer to the scarves and the products made of this material, as silky and not silk. Due to the upcycled nature of this material, small signs of distress and stains may appear on the end garment, even after our comprehensive quality control." />
+            <CardMaterial src="/img/material_2.webp" material="UPCYCLED DENIM MATERIAL" desc="Our upcycled denim material is made from Grade 4 vintage Levi’s 501 jeans, sourced in the Netherlands. The Grade number of the jeans, refers to the state of the vintage jeans, the highest being no. 1 and lowest being no. 4. What you would typically find in your local vintage store are Grade 1 and 2 jeans, as these jeans are with little to no holes or stains. We choose to use Grade 4 jeans as these are jeans with frequent rips, holes and stains, meaning jeans that would likely not be used for any other purpose than to gather the still usable material left on the jeans. The usable material is typically found on the back legs of the jeans, as this part of the jeans are rarely subject to wear and tear. After receiving the jeans we sort, clean and cut away the weak parts before cut and sew, in order to ensure the highest possible quality of the end product." />
+            <CardMaterial classs="color move" src="/img/material_3.webp" material="UPCYCLED LACE MATERIAL" desc="Our upcycled Lace material is made from upcycled vintage cotton tablecloth, bed covers etc., sourced in the Netherlands. Once we receive the lace material we sort, clean and cut away the weak parts before cut and sew, in order to ensure the highest possible quality of the end product. Due to the upcycled nature of this material, small signs of distress and stains may appear on the end garment, even after our comprehensive quality control." />
+            <CardMaterial class="move2" src="/img/material_4.webp" material="UPCYCLED T-SHIRT MATERIAL" desc="Our upcycled T-shirt material is made of Grade 2 vintage T-shirts, sourced in the Netherlands. The Grade number of the T-shirts, refers to the state of the vintage T-shirts. What you would typically find in your local vintage store are Grade 1. We choose to use Grade 2 T-shirts, as these T-shirts have been subject to an abnormal high amount of vertical shrinkage, meaning that the end fit is very square. Due to this reason, these T-shirts would typically be excluded in the buying from vintage stores. After receiving the T-shirts we sort, clean and cut away the weak parts before cut and sew, in order to ensure the highest possible quality of the end product." />
+            <CardMaterial classs="color" src="/img/material_5.webp" material="RECYCLED COTTON" desc="Our recycled cotton is GRS (Global Recycle Standard) certified and made 100% from pre- and post consumer waste. We use two types of heavyweight recycled cotton, 250GSM for T-Shirts and 410GSM for our sweat styles. The recycled cotton is made by collecting two types of cotton waste, pre-consumer waste and post consumer waste. Pre-consumer waste is cotton waste from factories, such as cut off scraps from fabric and yarns. Post-consumer waste is cotton waste from consumers such as old garments, upholstery, towels etc. The fabrics and materials are then sorted by colors, before it is shredded into yarn and further into raw fiber. Lastly, the raw fiber is spun back into yarn, for reuse in other products. Our recycled cotton is manufactured in Portugal, only 1-hours drive from our factory where we produce our recycled cotton styles." />
+            <CardMaterial src="/img/material_6.webp" material="COTTON / COTTON BLEND" desc="Though we always strive to use materials made from either upcycled materials/garments or from 100% recycled qualities, we sometimes have to settle with conventional cotton or cotton blends. This is due to the simple fact that we are a small brand, producing small collections and low quantities of each item. On the other side, most fabric suppliers require high minimum quantity orders. Therefore we sometimes have to choose from the stock material, available at our manufacturers. This is the case with the material for our caps and the material for the lining for our Tee Bags. Our cap material is made from a heavyweight cotton twill blend, made of 25% recycled cotton, 25% organic cotton and 50% conventional cotton. Our lining for our Tee Bags are made of a cotton twill, made from 100% conventional cotton. In collaboration with our manufacturers and suppliers, we are constantly sourcing and trying to find new solutions, to offer high quality products in recycled and upcycled qualities." />
+        </div>
+    </main>
+</MainLayout>
+
+<style>
+    .space {
+        height: 80px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+
+    .shelf {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: fit-content;
+    }
+
+    @media (min-width: 600px) {
+        .shelf {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(3, 1fr);
+        }
+
+        .space {
+            height: 160px;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+        }
+    }
+   
+</style>

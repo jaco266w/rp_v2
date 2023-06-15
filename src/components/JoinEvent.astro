@@ -1,0 +1,54 @@
+---
+
+---
+
+<section class="margin">
+    <img src="/img/join_event.webp" alt="Ruda Patrice T-shirt med broderet blomst">
+    <div>
+        <h2>Join Our Event?</h2>
+        <p>Join us at our next event on Saturday 10 June, where you can give your old clothes or a new piece of clothing a new lease of life. You can have holes repaired or give your clothes a new look by having flowers embroidered on them. The only limit is your imagination.</p>
+        <p>We look forward to seeing you on Saturday 10 June from 12-16 in the shop. We will provide a glass of wine and a unique piece of clothing.</p>
+    </div>
+</section>
+
+<style>
+
+    section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    h2 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    p {
+        margin-bottom: 20px;
+    }
+
+    @media (min-width: 600px) {
+        section .margin {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        section {
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 100px;
+
+            background-color: var(--secondary-color);
+            padding: 50px;
+        }
+
+        img {
+            min-width: 250px;
+            object-fit: contain;
+        }
+
+        div {
+            align-self: center;
+        }
+    }
+</style>
