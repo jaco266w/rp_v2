@@ -6,7 +6,11 @@
     <div class="card_shelf">
       <a href="/drop1" class="card_drop">
         <h3>Drop 1</h3>
-        <img src="/img/drop1.webp" alt="Billede af drop">
+        <img 
+        srcset="/img/drop1-480w.webp 480w, /img/drop1-800w.webp 800w "
+        sizes="(max-width: 600px) 480px, 800px"
+        src="/img/drop1-800w.webp" 
+        alt="Billede af drop" />
       </a>
       <a href="/drop2" class="card_drop">
         <h3>Drop 2</h3>
