@@ -240,7 +240,7 @@
       
           #footer_about img {
               min-width: 100px;
-              height: auto;
+              aspect-ratio: 16 / 9;
               max-width: 200px;
               margin-bottom: 20px;
           }
